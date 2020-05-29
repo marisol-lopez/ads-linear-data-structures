@@ -13,9 +13,9 @@ dataStructures.forEach(ds => {
       queue = new ds();
     });
 
-    it('starts empty', () => {
-      expect(queue.count()).toBe(0);
-    });
+    // it('starts empty', () => {
+    //   expect(queue.count()).toBe(0);
+    // });
 
     describe('enqueue', () => {
       it('increases the count by 1', () => {

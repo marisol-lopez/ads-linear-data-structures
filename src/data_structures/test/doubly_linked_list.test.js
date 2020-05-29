@@ -93,12 +93,14 @@ describe(DoublyLinkedList, () => {
       });
     });
 
+    // failing
     it('yields undefined and does not decrease count when run on an empty list', () => {
       expect(dll.count()).toBe(0);
       expect(dll.removeHead()).toBe(undefined);
       expect(dll.count()).toBe(0);
     });
 
+    // failing
     it('yields undefined and does not decrease count when all elements have been removed', () => {
       const elements = ['linked', 'list', 'elements'];
       elements.forEach(el => dll.insertTail(el));
@@ -137,11 +139,13 @@ describe(DoublyLinkedList, () => {
       });
     });
 
+    // // failing
     it('decreases count by 1', () => {
       const elements = ['linked', 'list', 'elements'];
       elements.forEach(el => dll.insertHead(el));
 
       expect(dll.count()).toBe(elements.length);
+      console.log(elements.length + "ELEMENTS LENGTH");
 
       elements.forEach((el, i) => {
         dll.removeTail();
@@ -154,7 +158,7 @@ describe(DoublyLinkedList, () => {
       expect(dll.removeTail()).toBe(undefined);
       expect(dll.count()).toBe(0);
     });
-
+    // failing
     it('yields undefined and does not decrease count when all elements have been removed', () => {
       const elements = ['linked', 'list', 'elements'];
       elements.forEach(el => dll.insertHead(el));
@@ -168,7 +172,9 @@ describe(DoublyLinkedList, () => {
 
   describe('forEach', () => {
     it('runs the callback 0 times on an empty list', () => {
+      // creates a mock function
       const cb = jest.fn();
+
       dll.forEach(cb);
 
       expect(cb.mock.calls.length).toBe(0);
@@ -279,6 +285,7 @@ describe(DoublyLinkedList, () => {
       expect(dll.remove(tickets[1])).toBe('removed');
 
       const cb = jest.fn();
+
       dll.forEach(cb);
       expect(cb.mock.calls.length).toBe(elements.length - 1);
       expect(cb.mock.calls[0][0]).toBe('elements');
